@@ -10,7 +10,7 @@
     "client": "npm start --prefix client",
     "seed": "node seed.js",
     "install-client": "cd client && npm install",
-    "build": "cd client && npm run build",
+  
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": " NPM_CONFIG_PRODUCTION=true npm run install-client && npm run build"
   },
