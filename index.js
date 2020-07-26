@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-app.get('/',(req,res) => res.json({hello:'world'}));
+//app.get('/',(req,res) => res.json({hello:'world'}));
 app.use('/api/auth',routes.auth);
 app.use('/api/polls',routes.poll);
 
