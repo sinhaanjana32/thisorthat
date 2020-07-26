@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 
-require('dotenv').config();
-DB_CONNECT =mongodb+srv://anjana:sinha@cluster0.oxi54.mongodb.net/<dbname>?retryWrites=true&w=majority
+//require('dotenv').config();
+DB_CONNECT ="mongodb+srv://anjana:sinha@cluster0.oxi54.mongodb.net/<dbname>?retryWrites=true&w=majority"
 
 mongoose.set('debug', true); // it will show debug in console
 mongoose.Promise = global.Promise; // it allow us to handle promises like async js
