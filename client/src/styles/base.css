@@ -1,0 +1,51 @@
+:root {
+  --danger: #eebb4d;
+  --blue: #eebb4d;
+  --light: #221f3b;
+}
+
+body {
+  background-color: var(--light);
+  overflow-x: hidden !important;
+}
+
+
+@media screen and (max-width: 600px) {
+  .navbar-brand .pollbox .form{
+    overflow-x: hidden;
+ 
+   }
+ }
+
+ .footer {
+   padding-top: 1px;
+   padding-bottom: 20px;
+  margin-top: 60px;
+  
+  justify-content: center;
+  text-align: center;
+  text-transform: uppercase;
+  color: royalblue;
+  background-color:white;
+  font-weight: 600;
+  box-shadow: cornsilk 5px;
+}
+
+.span {
+  font-weight: 900;
+  color: brown;
+}
+
+
+
+@media screen and (max-width: 600px) {
+  .footer{
+      padding-bottom: 20px;
+      padding-top: 5px;
+   }
+.mfooter {
+
+  margin-top: 90px;
+}
+  
+ }
