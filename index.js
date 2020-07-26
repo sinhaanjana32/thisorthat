@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
+let PORT = process.env.PORT || 8080;
 
 
 const routes = require('./routes');
@@ -11,7 +12,7 @@ const handle = require('./handlers');
 
 
 const app = express();
-let port = process.env.PORT || 8080;
+
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -40,4 +41,4 @@ if (process.env.NODE_ENV === 'production') {
     };
 
 
-app.listen(port, () => console.log(`Server listening on port ${port}`));
+app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
