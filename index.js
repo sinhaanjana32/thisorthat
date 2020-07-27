@@ -5,14 +5,23 @@ const bodyParser = require('body-parser');
 const path = require('path');
 let PORT = process.env.PORT || 8080;
 
-
 const routes = require('./routes');
 const db = require('./models')
 const handle = require('./handlers');
 
+const config = require("./config/key");
+
+
+const mongoose = require("mongoose");
+const connect = mongoose.connect(config.mongoURI,
+  {
+    useNewUrlParser: true, useUnifiedTopology: true,
+    useCreateIndex: true, useFindAndModify: false
+  })
+  .then(() => console.log('MongoDB Connected...'))
+  .catch(err => console.log(err));
 
 const app = express();
-
 
 app.use(cors());
 app.use(bodyParser.json());
