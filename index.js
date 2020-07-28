@@ -67,12 +67,12 @@ res.sendFile(path.join(__dirname, 'client/build/index.html'));
 
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, 'client/build')));
+  app.use(express.static(path.join(__dirname, './client/build')));
      app.get('/*', (req, res) => {
-      res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+      res.sendFile(path.resolve(__dirname, "./client", "build", "index.html"));
     });
 
     }
 
-let PORT = process.env.PORT || 5000
+let PORT = process.env.PORT || 8080
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
