@@ -1,9 +1,11 @@
 require('dotenv').config();
 const express = require('express');
-const cors = require('cors');
+const cors = require('cors')
 const bodyParser = require('body-parser');
-const path = require('path');
-let PORT = process.env.PORT || 8080;
+const path = require("path");
+
+
+
 
 const routes = require('./routes');
 const db = require('./models')
@@ -28,12 +30,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-app.get('/',(req,res) => res.json({hello:'worlddddd'}));
+app.get('/',(req,res) => res.json({hello:'worlddd'}));
 app.use('/api/auth',routes.auth);
 app.use('/api/polls',routes.poll);
 
 app.use(handle.notFound);
 app.use(handle.error);
+
+app.use(express.static(path.join(__dirname, './client/build')));
+app.get('/*', (req, res) => {
+res.sendFile(path.join(__dirname, './client','build', 'index.html'));
+});
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 app.get('/*', (req, res) => {
@@ -41,13 +48,31 @@ res.sendFile(path.join(__dirname, 'client','build', 'index.html'));
 });
 
 
+app.use(express.static(path.join(__dirname, 'client/build')));
+app.get('/*', (req, res) => {
+res.sendFile(path.join(__dirname, './client','build', 'index.html'));
+});
+
+
+app.use(express.static(path.join(__dirname, 'client/build')));
+app.get('/*', (req, res) => {
+res.sendFile(path.join(__dirname, 'client/build/index.html'));
+});
+
+
+
+
+
+
+
+
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
+  app.use(express.static(path.join(__dirname, 'client/build')));
      app.get('/*', (req, res) => {
       res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
     });
 
     }
 
-
+let PORT = process.env.PORT || 5000
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));

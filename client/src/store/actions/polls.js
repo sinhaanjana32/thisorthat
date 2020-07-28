@@ -19,7 +19,7 @@ export const getPolls = () => {
       dispatch(setPolls(polls));
       dispatch(removeError());
     } catch (err) {
-      const { error } = err.response.data;
+      const { error } = err.response.data
       dispatch(addError(error));
     }
   };
@@ -44,7 +44,7 @@ export const createPoll = data => {
       const poll = await API.call('post', 'polls', data);
       dispatch(setCurrentPoll(poll));
       dispatch(removeError());
-    } catch (err) {
+    }  catch (err) {
       const { error } = err.response.data;
       dispatch(addError(error));
     }
