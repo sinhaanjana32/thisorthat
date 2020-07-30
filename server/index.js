@@ -36,13 +36,6 @@ app.get('/*', (req, res) => {
 res.sendFile(path.join(__dirname, '../client','build', 'index.html'));
 });
 
-app.use((req, res, next) => {
-  let err = new Error('Not Found lol');
-  err.status = 404;
-  next(err);
-});
-
-app.use(handle.error);
 
 
 if (process.env.NODE_ENV === "production") {
@@ -52,6 +45,15 @@ if (process.env.NODE_ENV === "production") {
     });
 
     }
+
+    app.use((req, res, next) => {
+      let err = new Error('Not Found lol');
+      err.status = 404;
+      next(err);
+    });
+    
+    app.use(handle.error);
+    
 
 let PORT = process.env.PORT || 4000
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
