@@ -1,7 +1,7 @@
   
 import axios from 'axios';
 
-var host = 'http://localhost:8080/api';
+var host = '/api';
 
 export const setToken = token => {
   if (token) {
