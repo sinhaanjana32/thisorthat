@@ -17,13 +17,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const mongoose = require("mongoose");
-const connect = mongoose.connect(config.mongoURI,
-  {
-    useNewUrlParser: true, useUnifiedTopology: true,
-    useCreateIndex: true, useFindAndModify: false
-  })
-  .then(() => console.log('MongoDB Connected...'))
-  .catch(err => console.log(err));
+mongoose
+.connect(config.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+.then(() => console.log("DB connected"))
+.catch(err => console.error(err));
 
 
   app.use('/api/auth', routes.auth);
@@ -40,7 +37,7 @@ res.sendFile(path.join(__dirname, '../client','build', 'index.html'));
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, '../client/build')));
-     app.get('/*', (req, res) => {
+     app.get('*', (req, res) => {
       res.sendFile(path.resolve(__dirname, "../client", "build", "index.html"));
     });
 
@@ -55,5 +52,5 @@ if (process.env.NODE_ENV === "production") {
     app.use(handle.error);
     
 
-let PORT = process.env.PORT || 4000
+let PORT = process.env.PORT || 8080
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
