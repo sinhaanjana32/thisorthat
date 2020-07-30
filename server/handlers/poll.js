@@ -5,7 +5,7 @@ exports.showPolls = async (req, res, next) => {
     const polls = await db.Poll.find().populate('user', ['username', 'id']);
     //populate('voted', ['username', 'id']);
 
-    return res.status(200).json(polls);
+   return res.status(200).json(polls);
   } catch (err) {
     return next({
       status: 400,

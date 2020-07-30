@@ -1,6 +1,7 @@
+  
 import axios from 'axios';
 
-const host = 'http://localhost:5000/api';
+var host = 'http://localhost:4000/api';
 
 export const setToken = token => {
   if (token) {
@@ -8,7 +9,7 @@ export const setToken = token => {
   } else {
     delete axios.defaults.headers.common['Authorization'];
   }
-}; 
+};
 
 export const call = async (method, path, data) => {
   const response = await axios[method](`${host}/${path}`, data);
