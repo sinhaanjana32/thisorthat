@@ -12,7 +12,6 @@ const db = require('./models')
 const handle = require('./handlers');
 
 
-
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -29,14 +28,6 @@ const connect = mongoose.connect(config.mongoURI,
 
   app.use('/api/auth', routes.auth);
   app.use('/api/polls', routes.poll);
-
-
-
-
-
-
-
-
 
 
 
