@@ -13,9 +13,10 @@ const db = require('./models')
 const handle = require('./handlers');
 
 
-app.use(cors());
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 
 const mongoose = require("mongoose");
 mongoose
@@ -24,8 +25,8 @@ mongoose
 .catch(err => console.error(err));
 
 
-  app.use('/api/auth', routes.auth);
-  app.use('/api/polls', routes.poll);
+app.use('/api/auth', routes.auth);
+app.use('/api/polls', routes.poll);
 
 
 
@@ -55,6 +56,4 @@ if (process.env.NODE_ENV === "production") {
     
     app.use(handle.error);
     
-
-let PORT = process.env.PORT || 8080
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
