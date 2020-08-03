@@ -16,7 +16,7 @@ app.use(cors());
 
 const mongoose = require("mongoose");
 mongoose
-.connect(process.env.MONGODB_URI || 'mongodb+srv://anjana:sinha@cluster0.oxi54.mongodb.net/<dbname>?retryWrites=true&w=majority' , { useNewUrlParser: true, useUnifiedTopology: true })
+.connect(process.env.MONGODB_URI || 'mongodb+srv://us:password@cluster0.oxi54.mongodb.net/<dbname>?retryWrites=true&w=majority' , { useNewUrlParser: true, useUnifiedTopology: true })
 .then(() => console.log("DB connected"))
 .catch(err => console.error(err));
 
