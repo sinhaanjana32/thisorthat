@@ -7,11 +7,7 @@ const path = require("path");
 
 
 let PORT = process.env.PORT || 8080
-const config = require("./config/key");
 const routes = require('./routes');
-const db = require('./models')
-const handle = require('./handlers');
-
 
 
 app.use(bodyParser.json());
@@ -20,21 +16,15 @@ app.use(cors());
 
 const mongoose = require("mongoose");
 mongoose
-.connect(config.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+.connect(process.env.MONGODB_URI || 'mongodb+srv://anjana:sinha@cluster0.oxi54.mongodb.net/<dbname>?retryWrites=true&w=majority' , { useNewUrlParser: true, useUnifiedTopology: true })
 .then(() => console.log("DB connected"))
 .catch(err => console.error(err));
-
-
 
 
 app.use('/api/auth', routes.auth);
 app.use('/api/polls', routes.poll);
 
 
-app.use(express.static(path.join(__dirname, '../client/build')));
-app.get('*', (req, res) => {
- res.sendFile(path.resolve(__dirname, "../client", "build", "index.html"));
-});
 
 
 if (process.env.NODE_ENV === "production") {
@@ -44,6 +34,12 @@ if (process.env.NODE_ENV === "production") {
     });
 
     }
+
+    app.use(express.static(path.join(__dirname, '../client/build')));
+    app.get('*', (req, res) => {
+     res.sendFile(path.resolve(__dirname, "../client", "build", "index.html"));
+    });
+    
 
     
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
